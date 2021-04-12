@@ -1,13 +1,15 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+var bcrypt = require("bcryptjs");
 const cors = require("cors");
 const db = require("./models");
 const Role = db.role;
+const User = db.user;
 
 const app = express();
 
 let corsOptions = {
-    origin: "http://localhost:8081"
+    origin: "http://192.168.1.151:8080"
 };
 
 app.use(cors(corsOptions));
@@ -31,12 +33,12 @@ app.listen(PORT, () => {
 });
 
 // on dev
-db.sequelize.sync({force: true}).then(() => {
-    console.log('Drop and Resync Db');
-    initial();
-});
+// db.sequelize.sync({force: true}).then(() => {
+//     console.log('Drop and Resync Db');
+//     initial();
+// });
 // on prod
-// db.sequelize.sync()
+db.sequelize.sync()
 
 function initial() {
     Role.create({
@@ -46,11 +48,14 @@ function initial() {
 
     Role.create({
         id: 2,
-        name: "moderator"
+        name: "admin"
     });
 
-    Role.create({
-        id: 3,
-        name: "admin"
+    User.create({
+        id: 1,
+        username: 'Denis',
+        email: 'gurami152@gmail.com',
+        password: '12345678',
+        roleId: 2,
     });
 }
