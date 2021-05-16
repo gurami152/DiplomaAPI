@@ -7,6 +7,7 @@ const Role = db.role;
 const Department = db.department;
 const User = db.user;
 const FinancialResponsiblePerson = db.financiallyResponsiblePerson;
+const Status = db.status;
 
 const app = express();
 
@@ -27,6 +28,7 @@ app.get("/", (req, res) => {
 require('./routes/auth.routes')(app);
 require('./routes/user.routes')(app);
 require('./routes/financialResponsiblePerson.routes')(app);
+require('./routes/status.routes')(app);
 
 
 // set port, listen for requests
@@ -74,5 +76,9 @@ async function initial() {
         name: 'DENIS',
         departmentId: 1
     });
+
+    Status.create({
+        name: 'В ремонті'
+    })
 
 }
