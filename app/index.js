@@ -8,6 +8,8 @@ const Department = db.department;
 const User = db.user;
 const FinancialResponsiblePerson = db.financiallyResponsiblePerson;
 const Status = db.status;
+const TypeOfEquipment = db.typeOfEquipment;
+const TypeOfPartOfEquipment = db.typeOfPartOfEquipment;
 
 const app = express();
 
@@ -29,6 +31,11 @@ require('./routes/auth.routes')(app);
 require('./routes/user.routes')(app);
 require('./routes/financialResponsiblePerson.routes')(app);
 require('./routes/status.routes')(app);
+require('./routes/department.routes')(app);
+require('./routes/typeOfEquipment.routes')(app);
+require('./routes/typeOfPartOfEquipement.routes')(app);
+require('./routes/partOfEquipement.routes')(app);
+require('./routes/equipment.routes')(app);
 
 
 // set port, listen for requests
@@ -79,6 +86,14 @@ async function initial() {
 
     Status.create({
         name: 'В ремонті'
-    })
+    });
+
+    TypeOfEquipment.create({
+        name: 'Системний блок'
+    });
+
+    TypeOfPartOfEquipment.create({
+        name: 'Процесор'
+    });
 
 }
