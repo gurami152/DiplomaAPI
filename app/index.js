@@ -34,7 +34,7 @@ require('./routes/status.routes')(app);
 require('./routes/department.routes')(app);
 require('./routes/typeOfEquipment.routes')(app);
 require('./routes/typeOfPartOfEquipement.routes')(app);
-require('./routes/partOfEquipement.routes')(app);
+require('./routes/partOfEquipment.routes')(app);
 require('./routes/equipment.routes')(app);
 
 
