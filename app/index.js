@@ -47,13 +47,13 @@ app.listen(PORT, () => {
 
 
 // on dev
-// db.sequelize.sync({force: true}).then(() => {
-//     console.log('Drop and Resync Db');
-//     initial();
-// });
+db.sequelize.sync({force: true}).then(() => {
+    console.log('Drop and Resync Db');
+    initial();
+});
 
 // on prod
-db.sequelize.sync()
+// db.sequelize.sync()
 
 async function initial() {
     Role.create({

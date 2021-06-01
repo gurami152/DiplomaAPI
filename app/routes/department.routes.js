@@ -11,4 +11,5 @@ module.exports = function(app) {
     });
 
     app.get("/api/department/all", controller.all);
+
 };

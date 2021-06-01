@@ -12,21 +12,6 @@ module.exports = function(app) {
 
     app.get("/api/financial/all", controller.all);
 
-    // app.get(
-    //     "/api/test/user",
-    //     [authJwt.verifyToken],
-    //     controller.userBoard
-    // );
-    //
-    // app.get(
-    //     "/api/test/mod",
-    //     [authJwt.verifyToken, authJwt.isModerator],
-    //     controller.moderatorBoard
-    // );
-    //
-    // app.get(
-    //     "/api/test/admin",
-    //     [authJwt.verifyToken, authJwt.isAdmin],
-    //     controller.adminBoard
-    // );
+    app.post("/api/financial/add", controller.store);
+
 };
