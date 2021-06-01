@@ -13,11 +13,12 @@ const TypeOfPartOfEquipment = db.typeOfPartOfEquipment;
 
 const app = express();
 
-let corsOptions = {
-    origin: "http://192.168.1.198:8081"
-};
+// let corsOptions = {
+//     origin: "http://192.168.1.101:8081"
+// };
+//
+// app.use(cors(corsOptions));
 
-app.use(cors(corsOptions));
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
 // // parse requests of content-type - application/x-www-form-urlencoded
@@ -46,13 +47,13 @@ app.listen(PORT, () => {
 
 
 // on dev
-db.sequelize.sync({force: true}).then(() => {
-    console.log('Drop and Resync Db');
-    initial();
-});
+// db.sequelize.sync({force: true}).then(() => {
+//     console.log('Drop and Resync Db');
+//     initial();
+// });
 
 // on prod
-// db.sequelize.sync()
+db.sequelize.sync()
 
 async function initial() {
     Role.create({
