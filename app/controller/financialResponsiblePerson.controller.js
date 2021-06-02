@@ -4,27 +4,12 @@ const department = db.department;
 
 exports.all = (req, res) => {
     frp.findAll({
+        include: department,
         order: [
             ['id', 'DESC'],
         ],
     }).then(function (fprs) {
-        fprs.forEach((element) => {
-            department.findAll(
-                {
-                    limit: 1,
-                    where: {
-                        id: element.departmentId
-                    }
-                }
-            ).then(authorities => {
-                //
-                // element[0].department = authorities[0].name;
-                // console.log(element);
-                // console.log(authorities[0].name);
-                // console.log(authorities);
-            });
-            res.status(200).json(fprs);
-        })
+        res.status(200).json(fprs);
     });
 }
 
