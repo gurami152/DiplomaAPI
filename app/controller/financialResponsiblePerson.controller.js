@@ -14,13 +14,9 @@ exports.all = (req, res) => {
 }
 
 exports.store = (req, res) => {
-    console.log(req.body.department_id);
     frp.create({
         name: req.body.name,
         departmentId: req.body.department_id,
     })
     res.status(200).send();
-    // frp.findAll().then(function (department){
-    //     res.status(200);
-    // })
 };
